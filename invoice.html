@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <img src="assets/images/invoice.png" alt="invoice">
+    </div>
+    <!-- Text Container -->
+    <div class="text-container" id="invoiceContainer"></div>
+
+    <!-- Items Container -->
+     <div class="items-container">
+        <div class="item-one" id="item-one"></div>
+        <div class="item-two" id="item-two"></div>
+        <div class="item-three" id="item-three"></div>
+        <div class="item-four" id="item-four"></div>
+        <div class="item-five" id="item-five"></div>
+        <div class="item-six" id="item-six"></div>
+        <div class="item-seven" id="item-seven"></div>
+        <div class="grand-total" id="item-eight">10000</div>
+     </div>
+
+     <button class="print-btn" onclick="window.print()">Print This Page</button>
+
+     <script>
+        // Retrieve data from sessionStorage
+        const booker = sessionStorage.getItem("booker");
+        const shop = sessionStorage.getItem("shop");
+        const phone = sessionStorage.getItem("phone");
+        const date = sessionStorage.getItem("date");
+
+        // Items data
+        const itemName1 = sessionStorage.getItem("item_name1");
+        const itemQuantity1 = sessionStorage.getItem("item_quantity1");
+        const itemPrice1 = sessionStorage.getItem("unit_price1");
+
+        // Items data
+        const itemName2 = sessionStorage.getItem("item_name2");
+        const itemQuantity2 = sessionStorage.getItem("item_quantity2");
+        const itemPrice2 = sessionStorage.getItem("unit_price2");
+
+        // Items data
+        const itemName3 = sessionStorage.getItem("item_name3");
+        const itemQuantity3 = sessionStorage.getItem("item_quantity3");
+        const itemPrice3 = sessionStorage.getItem("unit_price3");
+
+        // Fill the invoice container with the data
+        const textContainerClassFillData = `
+            <small class="booker-name">${booker}</small>
+            <small class="shop-name">${shop}</small>
+            <small class="ph">${phone}</small>
+            <small class="invoice-date">${date}</small>
+        `;
+
+        const itemName4 = sessionStorage.getItem("item_name4");
+const itemQuantity4 = sessionStorage.getItem("item_quantity4");
+const itemPrice4 = sessionStorage.getItem("unit_price4");
+
+const itemName5 = sessionStorage.getItem("item_name5");
+const itemQuantity5 = sessionStorage.getItem("item_quantity5");
+const itemPrice5 = sessionStorage.getItem("unit_price5");
+
+const itemName6 = sessionStorage.getItem("item_name6");
+const itemQuantity6 = sessionStorage.getItem("item_quantity6");
+const itemPrice6 = sessionStorage.getItem("unit_price6");
+
+const itemName7 = sessionStorage.getItem("item_name7");
+const itemQuantity7 = sessionStorage.getItem("item_quantity7");
+const itemPrice7 = sessionStorage.getItem("unit_price7");
+
+// Create item data for 4–7
+const itemFourData = `
+    <span class="item-name">${itemName4}</span>
+    <span class="item-quantity">${itemQuantity4}</span>
+    <span class="unit-price">${itemPrice4}</span>
+    <span class="total-price">${itemPrice4 * itemQuantity4}</span>
+`;
+
+const itemFiveData = `
+    <span class="item-name">${itemName5}</span>
+    <span class="item-quantity">${itemQuantity5}</span>
+    <span class="unit-price">${itemPrice5}</span>
+    <span class="total-price">${itemPrice5 * itemQuantity5}</span>
+`;
+
+const itemSixData = `
+    <span class="item-name">${itemName6}</span>
+    <span class="item-quantity">${itemQuantity6}</span>
+    <span class="unit-price">${itemPrice6}</span>
+    <span class="total-price">${itemPrice6 * itemQuantity6}</span>
+`;
+
+const itemSevenData = `
+    <span class="item-name">${itemName7}</span>
+    <span class="item-quantity">${itemQuantity7}</span>
+    <span class="unit-price">${itemPrice7}</span>
+    <span class="total-price">${itemPrice7 * itemQuantity7}</span>
+`;
+
+// Inject data into items container
+document.getElementById("item-four").innerHTML = itemFourData;
+document.getElementById("item-five").innerHTML = itemFiveData;
+document.getElementById("item-six").innerHTML = itemSixData;
+document.getElementById("item-seven").innerHTML = itemSevenData;
+
+// Calculate grand total
+const grandTotal =
+    (itemPrice1 * itemQuantity1) +
+    (itemPrice2 * itemQuantity2) +
+    (itemPrice3 * itemQuantity3) +
+    (itemPrice4 * itemQuantity4) +
+    (itemPrice5 * itemQuantity5) +
+    (itemPrice6 * itemQuantity6) +
+    (itemPrice7 * itemQuantity7);
+
+// Display grand total
+document.querySelector(".grand-total").textContent = grandTotal;
+
+        const itemOneData = `
+            <span class="item-name">${itemName1}</span>
+            <span class="item-quantity">${itemQuantity1}</span>
+            <span class="unit-price">${itemPrice1}</span>
+            <span class="total-price">${itemPrice1*itemQuantity1}</span>
+        `;
+        
+        const itemTwoData = `
+            <span class="item-name">${itemName2}</span>
+            <span class="item-quantity">${itemQuantity2}</span>
+            <span class="unit-price">${itemPrice2}</span>
+            <span class="total-price">${itemPrice2*itemQuantity2}</span>
+        `;
+
+        const itemThreeData = `
+            <span class="item-name">${itemName3}</span>
+            <span class="item-quantity">${itemQuantity3}</span>
+            <span class="unit-price">${itemPrice3}</span>
+            <span class="total-price">${itemPrice3*itemQuantity3}</span>
+        `;
+
+        // Inject the filled data into the invoice container
+        document.getElementById("invoiceContainer").innerHTML = textContainerClassFillData;
+        document.getElementById("item-one").innerHTML = itemOneData;
+        document.getElementById("item-two").innerHTML = itemTwoData;
+        document.getElementById("item-three").innerHTML = itemThreeData;
+    </script>
+
+     <script src="assets/script/script.js"></script>
+</body>
+</html>

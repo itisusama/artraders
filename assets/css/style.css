@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: calibri;
+}
+
+.form-container{
+    position: fixed;
+}
+
+.text-container, .items-container,  .text-container > small, .items-container> div{
+    position: relative;
+    font-size: 11pt;
+}
+
+.text-container .booker-name{
+    top: 50px;
+    left: 182px;
+}
+
+.text-container .shop-name{
+    top: 112px;
+    left: 142px;
+}
+
+.text-container .ph{
+    top: 112px;
+    left: 482px;
+}
+
+.text-container .invoice-date{
+    top: 92px;
+    left: 405px;
+}
+
+.items-container > div, .grand-total{
+    position: relative;
+    left: 50px;
+    top: 174px;
+    width: 823px;
+    height: 20px;
+}
+
+.grand-total{
+    position: relative;
+    width: fit-content !important;
+    left: 820px !important;
+}
+
+.items-container > div > span:nth-of-type(1){
+    position: fixed;
+    margin-left: 138px;
+}
+.items-container > div > span:nth-of-type(2){
+    position: fixed;
+    margin-left: 550px;
+}
+.items-container > div > span:nth-of-type(3){
+    position: fixed;
+    margin-left: 650px;
+}
+.items-container > div > span:nth-of-type(4){
+    position: fixed;
+    margin-left: 750px;
+}
+
+.print-btn{
+    position: absolute; 
+    bottom: 150px; 
+    left: 50px; 
+    padding: 5px; 
+    border: 1px solid black; 
+    border-radius: 0; 
+    background-color: white;
+}
+
+.print-btn:hover{
+    background-color: black;
+    color: white;
+}
