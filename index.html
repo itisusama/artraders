@@ -10,91 +10,57 @@
 <body>
     <header style="text-align: center;">AR Traders</header>
     <form id="invoiceForm" onsubmit="handleFormSubmit(event)" style="width: 90%; margin-left: 5%;">
-        <fieldset><br>
+        <fieldset>
             <legend>Booker Information</legend>
-            <!-- <label for="booker">Booker Name:</label>
-            <input type="text" id="booker" name="booker"> <br><br> -->
             <label for="shop">Client Name:</label>
-            <input type="text" id="shop" name="shop" ><br><br>
+            <input type="text" id="shop" name="shop" required><br><br>
             <label for="phone">Phone Number:</label>
-            <input type="number" id="phone" name="phone" ><br><br>
+            <input type="number" id="phone" name="phone" required><br><br>
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date" ><br><br>
+            <input type="date" id="date" name="date" required><br><br>
         </fieldset><br>
 
-        <fieldset><br>
-            <legend>Items 1</legend>
-            <label for="item1">Item Name:</label>
-            <input type="text" id="item_name1" name="item_name1" >
-            <label for="quantity1">Item Quantity:</label>
-            <input type="number" id="item_quantity1" name="item_quantity1" >
-            <label for="price1">Unit Price:</label>
-            <input type="number" id="unit_price1" name="unit_price1" >
-        </fieldset><br><br>
-
-        <fieldset><br>
-            <legend>Items 2</legend>
-            <label for="item2">Item Name:</label>
-            <input type="text" id="item_name2" name="item_name2" >
-            <label for="quantity2">Item Quantity:</label>
-            <input type="number" id="item_quantity2" name="item_quantity2" >
-            <label for="price2">Unit Price:</label>
-            <input type="number" id="unit_price2" name="unit_price2" >
-        </fieldset><br><br>
-
-        <fieldset><br>
-            <legend>Items 3</legend>
-            <label for="item3">Item Name:</label>
-            <input type="text" id="item_name3" name="item_name3" >
-            <label for="quantity3">Item Quantity:</label>
-            <input type="number" id="item_quantity3" name="item_quantity3" >
-            <label for="price3">Unit Price:</label>
-            <input type="number" id="unit_price3" name="unit_price3" >
-        </fieldset><br><br>
-
-        <fieldset><br>
-            <legend>Items 4</legend>
-            <label for="item4">Item Name:</label>
-            <input type="text" id="item_name4" name="item_name4">
-            <label for="quantity4">Item Quantity:</label>
-            <input type="number" id="item_quantity4" name="item_quantity4">
-            <label for="price4">Unit Price:</label>
-            <input type="number" id="unit_price4" name="unit_price4">
-        </fieldset><br><br>
-        
-        <fieldset><br>
-            <legend>Items 5</legend>
-            <label for="item5">Item Name:</label>
-            <input type="text" id="item_name5" name="item_name5">
-            <label for="quantity5">Item Quantity:</label>
-            <input type="number" id="item_quantity5" name="item_quantity5">
-            <label for="price5">Unit Price:</label>
-            <input type="number" id="unit_price5" name="unit_price5">
-        </fieldset><br><br>
-        
-        <fieldset><br>
-            <legend>Items 6</legend>
-            <label for="item6">Item Name:</label>
-            <input type="text" id="item_name6" name="item_name6">
-            <label for="quantity6">Item Quantity:</label>
-            <input type="number" id="item_quantity6" name="item_quantity6">
-            <label for="price6">Unit Price:</label>
-            <input type="number" id="unit_price6" name="unit_price6">
-        </fieldset><br><br>
-        
-        <fieldset><br>
-            <legend>Items 7</legend>
-            <label for="item7">Item Name:</label>
-            <input type="text" id="item_name7" name="item_name7">
-            <label for="quantity7">Item Quantity:</label>
-            <input type="number" id="item_quantity7" name="item_quantity7">
-            <label for="price7">Unit Price:</label>
-            <input type="number" id="unit_price7" name="unit_price7">
-        </fieldset><br><br>
-        
+        <!-- Dynamically adding 7 item fields -->
+        <div id="itemsContainer"></div>
 
         <button type="submit">Generate Invoice</button>
     </form>
-    <script src="assets/script/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let itemsContainer = document.getElementById("itemsContainer");
+
+            for (let i = 1; i <= 7; i++) {
+                itemsContainer.innerHTML += `
+                    <fieldset>
+                        <legend>Item ${i}</legend>
+                        <label>Item Name:</label>
+                        <input type="text" id="item_name${i}" name="item_name${i}">
+                        <label>Quantity:</label>
+                        <input type="number" id="item_quantity${i}" name="item_quantity${i}">
+                        <label>Unit Price:</label>
+                        <input type="number" id="unit_price${i}" name="unit_price${i}">
+                    </fieldset><br>
+                `;
+            }
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            sessionStorage.setItem("shop", document.getElementById("shop").value);
+            sessionStorage.setItem("phone", document.getElementById("phone").value);
+            sessionStorage.setItem("date", document.getElementById("date").value);
+
+            for (let i = 1; i <= 7; i++) {
+                sessionStorage.setItem(`item_name${i}`, document.getElementById(`item_name${i}`).value);
+                sessionStorage.setItem(`item_quantity${i}`, document.getElementById(`item_quantity${i}`).value);
+                sessionStorage.setItem(`unit_price${i}`, document.getElementById(`unit_price${i}`).value);
+            }
+
+            // Redirect to invoice page
+            window.location.href = "invoice.html";
+        }
+    </script>
 </body>
 </html>
